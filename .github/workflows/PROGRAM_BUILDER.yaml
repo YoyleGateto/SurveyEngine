@@ -1,0 +1,113 @@
+name: PROGRAM_BUILDER
+run-name: CREATE_PROGRAM
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: ${{ matrix.platform }}
+    permissions: write-all
+    runs-on: ${{ matrix.os }}
+    container: ${{ matrix.container }}
+
+    strategy:
+      matrix:
+        include:
+          - platform: WINDOWS
+            os: windows-latest
+            container:
+            haxe_setup:
+            build_cmd: haxelib run lime build windows
+            extra_libs:
+            pre_build_commands:
+            artifact_path: export/release/windows/bin
+
+          - platform: WINDOWS_X32
+            os: windows-latest
+            container:
+            haxe_setup:
+            build_cmd: haxelib run lime build windows -32 -D 32bits -D HXCPP_M32
+            extra_libs:
+            pre_build_commands:
+            artifact_path: export/32bit/windows/bin
+
+          - platform: LINUX
+            os: ubuntu-22.04
+            container:
+            haxe_setup:
+            build_cmd: haxelib run lime build linux
+            extra_libs: |
+              sudo apt-get update
+              sudo apt-get install -y libvlc-dev libvlccore-dev dpkg-dev file desktop-file-utils gtk-update-icon-cache
+              sudo apt install libxcb1-dev libx11-xcb-dev
+            pre_build_commands:
+            artifact_path: export/release/linux/bin
+
+          - platform: ANDROID
+            os: ubuntu-latest
+            container:
+            haxe_setup:
+            build_cmd: haxelib run lime build android
+            extra_libs:
+            pre_build_commands: |
+              haxelib run lime config ANDROID_SDK $ANDROID_HOME
+              haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_LATEST_HOME
+              haxelib run lime config JAVA_HOME $JAVA_HOME_17_X64
+              haxelib run lime config ANDROID_SETUP true
+            artifact_path: export/release/android/bin/app/build/outputs/apk/release/*.apk
+
+          - platform: MACOS
+            os: macos-15
+            container:
+            haxe_setup:
+            build_cmd: haxelib run lime build macos --app-version="4.0.0-${{ github.run_id}}"
+            pre_build_commands:
+            artifact_path: export/release/macos/bin
+
+          - platform: MACOS_X64
+            os: macos-15-intel
+            container:
+            haxe_setup:
+            build_cmd: haxelib run lime build macos --app-version="4.0.0-${{ github.run_id}}"
+            pre_build_commands:
+            artifact_path: export/release/macos/bin
+
+    steps:
+      - name: PULL_COMMITS
+        uses: actions/checkout@v4.1.7
+
+      - name: INITIALIZE_HAXE_DEVICE
+        if: ${{ !matrix.haxe_setup }}
+        uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.3.7
+
+      - name: SETUP_HAXE_DEVICE
+        if: ${{ matrix.haxe_setup }}
+        run: ${{ matrix.haxe_setup }}
+
+      - name: RETRIEVE_TOOLS
+        run: |
+          haxelib --global git hmm https://github.com/ALE-Psych-Crew/hmm
+          haxelib --global run hmm setup
+          haxelib --global run hmm install
+
+      - name: RETRIEVE_SPECIFIC_TOOLS
+        if: ${{ matrix.extra_libs }}
+        run: ${{ matrix.extra_libs }}
+
+      - name: PROGRAM_SETTINGS
+        if: ${{ matrix.pre_build_commands }}
+        run: ${{ matrix.pre_build_commands }}
+
+      - name: CREATE_PROGRAM
+        run: ${{ matrix.build_cmd }}
+
+      - name: UPLOAD_PROGRAM
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.platform }} Build
+          path: ${{ matrix.artifact_path }}
+          if-no-files-found: error

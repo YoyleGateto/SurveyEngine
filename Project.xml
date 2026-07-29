@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://lime.openfl.org/project/1.0.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
+	<!-- Config -->
+
+	<app title="DeltaFlixel" file="SurveyEngine" packageName="com.erickcatmanuel.surveyengine" package="com.erickcatmanuel.surveyengine" main="core.Main" version="0.0.1" company="ErickCatmanuel"/>
+	
+	<set name="SWF_VERSION" value="11.8"/>
+	
+	<app preloader="flixel.system.FlxPreloader"/>
+	
+	<icon path="art/icon16.png" size='16'/>
+	<icon path="art/icon32.png" size='32'/>
+	<icon path="art/icon64.png" size='64'/>
+	<icon path="art/iconOG.png"/>
+	
+	<!-- Defines -->
+	
+	<define name="allowVideos" if="windows || linux || android" unless="32bits"/> 
+	<define name="allowWindowsAPI" if="windows cpp"/>
+	<define name="includesModding"/>
+	
+	<!-- Window -->
+
+	<window width="1280" height="720" fps="120" background="#000000" hardware="true" vsync="false"/>
+	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
+	<window if="mobile" width="0" height="0" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true"/>
+
+	<!-- Path Settings -->
+
+	<set name="BUILD_DIR" value="export/debug" if="debug"/>
+	<set name="BUILD_DIR" value="export/release" unless="debug"/>
+	<set name="BUILD_DIR" value="export/32bit" if="32bits"/>
+
+	<source path="source"/>
+
+	<assets path="assets" embed="false"/>
+	<assets path="mods" embed="false" if="includesModding"/>
+
+	<!-- Libs -->
+	
+	<haxelib name="jsonmod"/>
+	
+	<haxelib name="flixel"/>
+	<haxelib name="flixel-addons"/>
+
+	<haxelib name="hxvlc" if="allowVideos"/>
+
+	<haxelib name="hscript"/>
+	<haxelib name="rulescript"/>
+	<haxelib name="ale-rulescript-wrapper"/>
+
+	<haxelib name="sl-windows-api"/>
+
+	<haxelib name="extension-androidtools" if="android"/>
+	
+	<!-- Macros -->
+	
+	<haxeflag name="--macro" value="backend.macros.ImportsMacro.include()"/>
+
+	<!-- Haxe Defines -->
+
+	<haxeflag name="-dce" value="no"/>
+
+	<haxedef name='lime_disable_assets_version'/>	
+
+	<haxedef name="HXC_LIBVLC_LOGGING" if="allowVideos debug"/>
+	
+	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN"/>
+	
+	<haxedef name="FLX_NO_DEBUG" unless="debug"/>
+
+	<haxedef name="NAPE_RELEASE_BUILD" unless="debug"/>
+	
+	<define name="HX_WINDOWS" if="allowWindowsAPI"/>
+	
+	<section if="cpp">
+		<setenv name="HAXEPATH" value="./"/>
+		<haxedef name="HXCPP_CHECK_POINTER"/>
+		<haxedef name="HXCPP_STACK_LINE"/>
+		<haxedef name="HXCPP_STACK_TRACE"/>
+		<haxedef name="HXCPP_DEBUG_LINK"/>
+		<haxedef name="HXCPP_CATCH_SEGV"/>
+		<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
+	</section>
+
+	<haxedef name='no-deprecation-warnings'/>
+
+	<haxedef name="message.reporting" value="pretty"/>
+
+	<haxedef name="DISABLED_MACRO_SUPERLATIVE" if="android"/>
+
+	<haxedef name="hscriptPos"/>
+
+	<!-- ALSoft Config -->
+
+	<section if="desktop">
+		<assets path="alsoft.txt" rename="plugins/alsoft.ini" type="text" if="windows"/>
+		<assets path="alsoft.txt" rename="plugins/alsoft.conf" type="text" unless="windows"/>
+	</section>
+
+	<!-- Android -->
+
+	<config type="android" gradle-version="8.10.2" gradle-plugin="8.8.0" ndkVersion="27.0"  minimum-sdk-version="26" target-sdk-version="35"/>
+
+	<config:android>
+        <gradle-properties org.gradle.jvmargs="-Xmx2048m -XX:MaxMetaspaceSize=512m"/>
+    </config:android>
+		
+	<architecture exclude="armv7" if="android"/>
+	
+	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" if="android"/>
+	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" if="android"/>
+
+	<config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+	<config:android permission="android.permission.REQUEST_INSTALL_PACKAGES"/>
+
+	<config:android permission="android.permission.INTERNET"/>
+	<config:android permission="android.permission.ACCESS_NETWORK_STATE"/>
+
+	<certificate path="key.keystore" password="programpass" alias="survey-engine" alias-password="programpass" if="android"/>
+</project>
