@@ -82,13 +82,13 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
         destroyControls();
     }
 
-    public function restartControls()
+    public function restartControls(?dumb:Bool)
     {
         for (obj in [acceptButton, backButton, menuButton, joystick])
             obj.restart();
     }
     
-    public function destroyButtons()
+    public function destroyButtons(?dumb:Bool)
     {
         for (obj in [acceptButton, backButton, menuButton, joystick])
         {
@@ -109,7 +109,7 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
         }
     }
     
-    public function initControls()
+    public function initControls(?dumb:Bool)
     {
 		acceptButton = new MobileButton(0,0, Paths.sprite("ui/mobile/z"), Paths.sprite("ui/mobile/zPress"));
 		acceptButton.updateHitbox();
@@ -133,7 +133,7 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
     		obj.alpha = alpha;
     }
     
-    public function updateControls()
+    public function updateControls(?dumb:Bool)
     {
     	var positions = [
 			joystick: [50, FlxG.height-300],
