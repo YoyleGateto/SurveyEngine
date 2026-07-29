@@ -23,8 +23,8 @@ class MobileAPI
     public static function toggleControls(show:Bool)
         controls?.toggleControls(show);
 
-    public static function initControls()
-        controls?.initControls();
+    public static function createControls()
+        controls?.createControls();
         
     public static function updateControls()
         controls?.updateControls();

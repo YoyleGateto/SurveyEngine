@@ -38,7 +38,7 @@ class State extends FlxState
             #end
         }
         
-        MobileAPI.initControls();
+        MobileAPI.createControls();
     }
 
 	override function tryUpdate(elapsed:Float):Void
