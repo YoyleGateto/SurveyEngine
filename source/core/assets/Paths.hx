@@ -320,11 +320,17 @@ class Paths
         return get(file, FileType.CONTENT, permanent, missingPrint, false);
     
     public static function saveContent(file:String, content:String)
-        File.saveContent((Paths.mod == null ? assets : (mods + "/" mod)) + "/" + file, content);
+    {
+    	var path = (mod == null ? assets : (mods + "/" + mod));
+        File.saveContent(path + "/" + file, content);
+    }
     
     public static function saveBytes(file:String, bytes:Bytes)
-        File.saveBytes((Paths.mod == null ? assets : (mods + "/" mod)) + "/" + file, bytes);
-
+    {
+    	var path = (mod == null ? assets : (mods + "/" + mod));
+        File.saveBytes(path + "/" + file, bytes);
+	}
+	
     // Sprites
 
     public static function sprite(file:String, ?permanent:Bool = false, ?missingPrint:Bool = true):FlxGraphic
