@@ -95,7 +95,7 @@ class Save
 	                    Reflect.setField(options, option.id, option.value);
 
             for (bind in jsonBinds)
-				if (Reflect.field(keybinds.data. bind.id) == null)
+				if (Reflect.field(keybinds.data, bind.id) == null)
                 	Reflect.setField(options.keybinds, bind.id, FlxKey.fromString(def));
         }
         
