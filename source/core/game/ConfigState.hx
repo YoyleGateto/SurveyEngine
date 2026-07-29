@@ -1,4 +1,4 @@
-package core.config;
+package core.game;
 
 import survey.states.ModsState;
 

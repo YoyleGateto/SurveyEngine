@@ -30,9 +30,6 @@ import survey.states.CustomState;
 import survey.substates.CustomSubState;
 
 import survey.visuals.BitmapText;
-import survey.objects.DeltaSprite;
-import survey.objects.DeltaCharacter;
-import survey.objects.DeltaEnemy;
 
 import flixel.graphics.FlxGraphic;
 
