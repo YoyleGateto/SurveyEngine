@@ -106,7 +106,7 @@ class Save
     {
         if (Paths.exists('data/options.json'))
         {
-            var jsonData:Dynamic = Paths.json('data/options').options
+            var jsonData:Array<Dynamic> = Paths.json('data/options').options;
             var jsonBinds:Array<Dynamic> = Paths.json('data/options').keybinds;
             
             for (category in jsonData.options)
