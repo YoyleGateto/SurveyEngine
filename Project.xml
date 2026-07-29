@@ -55,7 +55,7 @@
 	
 	<!-- Macros -->
 	
-	<haxeflag name="--macro" value="backend.macros.ImportsMacro.include()"/>
+	<haxeflag name="--macro" value="core.macros.ImportsMacro.include()"/>
 
 	<!-- Haxe Defines -->
 
