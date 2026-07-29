@@ -33,14 +33,10 @@ class Save
 		    { exists: false },
 		    { exists: false },
 		];
-    	savesPath = Paths.mod == null ? "saves" : (Paths.mods + "/" + Paths.mod + "/saves")
+    	savesPath = Paths.mod == null ? "saves" : (Paths.mods + "/" + Paths.mod + "/saves");
     	
         save = new FlxSave();
 		save.bind('SURVEY_DATA', utils.cool.FileUtil.getSavePath(false));
-        
-        loadSaveFiles():
-        loadOptions();
-        loadControls()
     }
     
     // SAVE FILES //
