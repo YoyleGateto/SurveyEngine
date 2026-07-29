@@ -1,3 +1,5 @@
+package survey.states;
+
 import survey.visuals.ModBox;
 import sys.FileSystem;
 import survey.options.*;

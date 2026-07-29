@@ -1,4 +1,4 @@
-package funkin.substates;
+package survey.substates;
 
 import haxe.ds.StringMap;
 import scripting.ScriptManager;

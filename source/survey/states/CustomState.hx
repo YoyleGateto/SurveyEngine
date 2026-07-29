@@ -1,4 +1,4 @@
-package funkin.states;
+package survey.states;
 
 import haxe.ds.StringMap;
 import scripting.ScriptManager;
