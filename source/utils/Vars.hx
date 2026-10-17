@@ -2,7 +2,6 @@ package utils;
 
 import api.DesktopAPI;
 
-import core.structures.Metadata;
 import core.Main;
 
 import utils.cool.EngineUtil;
@@ -50,7 +49,7 @@ class Vars
 			
 			transition: 'Transition',
 
-			title: 'DeltaFlixel',
+			title: 'DELTAFLIXEL',
 			icon: 'icon',
 			
 			modID: null

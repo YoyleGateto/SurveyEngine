@@ -48,7 +48,7 @@ class DebugCounter extends Sprite
         return showBG;
     }
 
-    public function update(?_, ?force:Bool = false);
+    public function update(?_, ?force:Bool = false)
     {
         label.text = Std.string(Math.floor(1 / (FlxG.elapsed <= 0 ? 1 : FlxG.elapsed))) + "FPS\n" + (Paths.mod == null ? '' : Paths.mod) + (Vars.data.developerMode ? ' [DEV]' : '');
 

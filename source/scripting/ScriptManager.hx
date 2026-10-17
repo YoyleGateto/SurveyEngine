@@ -1,7 +1,5 @@
 package scripting;
 
-import core.debug.HotReloading;
-
 import scripting.HScript;
 import ale.rulescript.RuleScriptGlobal;
 import rulescript.Context;
