@@ -133,12 +133,12 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
     
     public function updateControls()
     {
-    	var positions = [
+    	var positions = {
 			joystick: [50, FlxG.height-300],
 			accept: [FlxG.width - 200, FlxG.height-130],
 			menu: [FlxG.width - 150, FlxG.height-230],
 			back: [FlxG.width - 100, FlxG.height-130],
-		];
+		};
 		for (field in Reflect.fields(Save.options.touchPos))
 		{
 			Reflect.setField(positions, field, Reflect.field(Save.mobileControls.data, field));
