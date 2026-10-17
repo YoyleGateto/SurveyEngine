@@ -100,43 +100,35 @@ class MobileJoystick extends FlxSpriteGroup
 			}
 			
 			if (!keys.get("up").pressed) {
-				if (stick.y < -deadzone) {
+				if (stick.y < -deadzone)
 					keys.get("up").pressed = keys.get("up").justPressed = true;
-				}
 			} else if (stick.y > -deadzone) {
-					keys.get("up").pressed = false;
-					keys.get("up").justReleased = true;
-				}
+				keys.get("up").pressed = false;
+				keys.get("up").justReleased = true;
 			}
 			
 			if (!keys.get("down").pressed) {
-				if (stick.y > deadzone) {
+				if (stick.y > deadzone)
 					keys.get("down").pressed = keys.get("down").justPressed = true;
-				}
 			} else if (stick.y < deadzone) {
-					keys.get("down").pressed = false;
-					keys.get("down").justReleased = true;
-				}
+				keys.get("down").pressed = false;
+				keys.get("down").justReleased = true;
 			}
 			
 			if (!keys.get("left").pressed) {
-				if (stick.x < -deadzone) {
+				if (stick.x < -deadzone)
 					keys.get("left").pressed = keys.get("left").justPressed = true;
-				}
 			} else if (stick.x > -deadzone) {
-					keys.get("left").pressed = false;
-					keys.get("left").justReleased = true;
-				}
+				keys.get("left").pressed = false;
+				keys.get("left").justReleased = true;
 			}
 			
 			if (!keys.get("right").pressed) {
-				if (stick.x > deadzone) {
+				if (stick.x > deadzone)
 					keys.get("right").pressed = keys.get("right").justPressed = true;
-				}
 			} else if (stick.x < deadzone) {
-					keys.get("right").pressed = false;
-					keys.get("right").justReleased = true;
-				}
+				keys.get("right").pressed = false;
+				keys.get("right").justReleased = true;
 			}
 		} else {
 			thumb.x = center.x;
