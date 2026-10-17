@@ -8,24 +8,8 @@ class SequenceHandler {
 	public static var textTimer:FlxTimer;
 	public static var sequence:Array<Void -> Void> = [];
 	public static var conditionCallback:Null<Void -> Bool>;
-	
-	public static function init()
-    {
-        super();
-        textTimer = new FlxTimer();
-        
-        FlxG.signals.preStateCreate.add(clean);
-        FlxG.signals.postUpdate.add(update);
-    }
     
-    public static function destroy()
-    {
-    	FlxG.signals.preStateCreate.remove(clean);
-        FlxG.signals.postUpdate.remove(update);
-    	clean();
-    }
-    
-    public static function clean()
+    public static function clean(?state:flixel.FlxState)
     {
     	if (textTimer != null) {
 			textTimer.cancel();
@@ -174,7 +158,7 @@ class SequenceHandler {
 		if (box != null) box.visible = false;
 	}
 	
-	public static function update()
+	public static function update(?state:flixel.FlxState)
 	{
 		if (conditionCallback != null) {
 			var result = conditionCallback();
@@ -190,4 +174,19 @@ class SequenceHandler {
 		sequence = sequenceEvents;
 		callEvent();
 	}
+	
+	public static function init()
+    {
+        textTimer = new FlxTimer();
+        
+        FlxG.signals.preStateCreate.add(clean);
+        FlxG.signals.postUpdate.add(update);
+    }
+    
+    public static function destroy()
+    {
+    	FlxG.signals.preStateCreate.remove(clean);
+        FlxG.signals.postUpdate.remove(update);
+    	clean();
+    }
 }

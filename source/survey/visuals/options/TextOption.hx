@@ -13,7 +13,4 @@ class TextOption extends BaseOption
 		if (Callback != null)
 			callback = Callback;
 	}
-	
-	public function change(?num) {}
-	public function load() {}
 }

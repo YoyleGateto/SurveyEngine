@@ -8,7 +8,7 @@ class CustomState extends State
     public var scriptName:String = '';
 	public var manager:ScriptManager;
     
-    override public function new(script:String, ?args:Array<Dynamic>)
+    override function new(script:String, ?args:Array<Dynamic>)
     {
         super();
 
@@ -18,7 +18,7 @@ class CustomState extends State
 
     @:unreflective var watchFiles:Array<String> = [];
 
-    override public function create()
+    override function create()
     {        
         super.create();
 
@@ -33,7 +33,7 @@ class CustomState extends State
         manager.callback('postCreate');
     }
 
-    override public function update(elapsed:Float)
+    override function update(elapsed:Float)
     {
         if (manager.callback('update', [elapsed]))
         {
@@ -43,7 +43,7 @@ class CustomState extends State
         manager.callback('postUpdate', [elapsed]);
     }
 
-    override public function destroy()
+    override function destroy()
     {
         manager.callback('destroy');
         super.destroy();
@@ -54,7 +54,7 @@ class CustomState extends State
         manager.destroy();
     }
 
-    override public function onFocus()
+    override function onFocus()
     {
         if (manager.callback('onFocus'))
             super.onFocus();
@@ -62,7 +62,7 @@ class CustomState extends State
         manager.callback('postFocus');
     }
 
-    override public function onFocusLost()
+    override function onFocusLost()
     {
         if (manager.callback('onFocusLost'))
             super.onFocusLost();
@@ -70,7 +70,7 @@ class CustomState extends State
         manager.callback('postFocusLost');
     }
 
-    override public function openSubState(substate:flixel.FlxSubState):Void
+    override function openSubState(substate:flixel.FlxSubState):Void
     {
         if (manager.callback('openSubState', [substate]))
             super.openSubState(substate);
@@ -78,7 +78,7 @@ class CustomState extends State
         manager.callback('postOpenSubState', [substate]);
     }
 
-    override public function closeSubState():Void
+    override function closeSubState():Void
     {
         if (manager.callback('closeSubState'))
             super.closeSubState();
@@ -86,7 +86,7 @@ class CustomState extends State
         manager.callback('postCloseSubState');
     }
 
-    public function resetCustomState()
+    public function reset()
     {
         shouldClearMemory = false;
         Utility.switchState(new CustomState(scriptName, manager.arguments), true, true);

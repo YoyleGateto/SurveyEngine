@@ -7,7 +7,7 @@ class NumOption extends BaseOption
 	public var max:Float;
 	public var step:Float;
 	
-	public function new(DisplayName:String, Step:Float, Min:Float, Max:Float, Save:Dynamic, Name:String)
+	override function new(DisplayName:String, Step:Float, Min:Float, Max:Float, Save:Dynamic, Name:String)
 	{
 		super(DisplayName, Save, Name);
 		step = Step;
@@ -16,17 +16,18 @@ class NumOption extends BaseOption
 		val = Reflect.field(save, name) ?? min;
 	}
 	
-	public function load()
+	override function load()
 	{
 		val = Reflect.field(save, name) ?? min;
 	}
 	
-	public function change(?num:Float = 0.0)
+	override function change(?num:Int = 0):Int
 	{
 		val += (step * num);
 		if (val > max) val = min;
 		if (val < min) val = max;
 		Reflect.setField(save, name, val);
 		Utility.playSound("menu/scroll", true);
+		return num
 	}
 }

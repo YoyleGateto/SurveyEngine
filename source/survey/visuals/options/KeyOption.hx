@@ -7,7 +7,7 @@ class KeyOption extends BaseOption
 {
 	public var canInput:Bool = false;
 
-	public function new(?DisplayName, ?List:Array<String>, ?Save:Dynamic, ?Name:String)
+	override function new(?DisplayName, ?List:Array<String>, ?Save:Dynamic, ?Name:String)
 	{
 		super(DisplayName, Save, Name);
 		val = FlxKey.toString(Reflect.field(save, name)) ?? "Z";
@@ -51,7 +51,7 @@ class KeyOption extends BaseOption
 		Utility.playSound("menu/confirm", true);
 	}
 	
-	public function load()
+	override function load()
 	{
 		val = FlxKey.toString(Reflect.field(save, name)) ?? "Z";
 	}

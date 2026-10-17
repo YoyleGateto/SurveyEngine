@@ -13,7 +13,7 @@ class InputOption extends BaseOption
 	public var line:FlxSprite;
 	public var canInput:Bool = false;
 	
-	public function new(DisplayName:String, Save:Dynamic, Name:String)
+	override function new(DisplayName:String, Save:Dynamic, Name:String)
 	{
 		super(DisplayName, Save, Name);
 		
@@ -26,7 +26,7 @@ class InputOption extends BaseOption
 		FlxG.stage.window.onTextInput.add(onTextInput);
 	}
 	
-	public function load()
+	override function load()
 	{
 		val = Reflect.field(save, name) ?? "";
 	}
@@ -115,6 +115,4 @@ class InputOption extends BaseOption
 		
 		Utility.playSound("menu/scroll", 1);
 	}
-	
-	public function change(?num) {}
 }

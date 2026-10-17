@@ -5,12 +5,12 @@ class BaseOption extends FlxSpriteGroup
 	public var save:Dynamic;
 	public var name:String;
 	public var displayName:String;
-	public var val:Dynamic;
+	public var val:Null<Dynamic>;
 	public var label:FlxText;
 	public var text:FlxText;
 	public var selected:Bool;
 	
-	public function new(DisplayName:String, Save:Dynamic, Name:String)
+	override function new(DisplayName:String, Save:Dynamic, Name:String)
 	{
 		super(0, 0);
 		
@@ -36,5 +36,15 @@ class BaseOption extends FlxSpriteGroup
 		text.x = x + 320;
 		label.text = displayName;
 		text.text = val;
+	}
+	
+	public function change(?num:Int = 0):Int
+	{
+		return num;
+	}
+	
+	public function load()
+	{
+		val = null;
 	}
 }

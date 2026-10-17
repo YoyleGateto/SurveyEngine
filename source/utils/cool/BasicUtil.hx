@@ -19,9 +19,10 @@ class BasicUtil
         return FlxColor.fromRGB(adjust(color >> 16 & 0xFF), adjust(color >> 8 & 0xFF), adjust(color & 0xFF));
     }
 	
-	public static function playSound(path:String, ?force = false):FlxSound
+	public static function playSound(path:String, vol:Float = 1, force:Bool = false):FlxSound
 	{
 		var sound = FlxG.sound.load(Paths.sound(path));
+		sound.volume = vol;
 		sound.play(force);
 		return sound;
 	}

@@ -4,13 +4,13 @@ import survey.visuals.options.BaseOption;
 
 class BoolOption extends BaseOption
 {
-	public function new(?DisplayName:String, ?Save:Dynamic, ?Name:String)
+	override function new(?DisplayName:String, ?Save:Dynamic, ?Name:String)
 	{
 		super(DisplayName, Save, Name);
 		val = Reflect.field(save, name) ?? false;
 	}
 	
-	public function load()
+	override function load()
 	{
 		val = Reflect.field(save, name) ?? false;
 	}
@@ -21,10 +21,11 @@ class BoolOption extends BaseOption
 		text.text = val ? "ON" : ("OFF");
 	}
 	
-	public function change(?num)
+	override function change(?num:Int)
 	{
 		val = !val;
 		Reflect.setField(save, name, val);
 		Utility.playSound("menu/scroll", 1);
+		return num;
 	}
 }

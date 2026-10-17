@@ -4,13 +4,15 @@ import survey.visuals.ModBox;
 import sys.FileSystem;
 import survey.visuals.options.*;
 import core.game.ConfigState;
+import flixel.util.FlxSave;
 
 class ModSelectState extends State
 {
-	var boxGrp:FlxTypedGroup<FlxSprite>;
+	var boxGrp:FlxTypedGroup<ModBox>;
 	var mods:Array<Dynamic>;
 	var sel:Int;
 	var soul:FlxSprite;
+	var soul2:FlxSprite;
 	
 	var optionsGrp:Array<BaseOption>;
 	var optSel:Int;
@@ -62,7 +64,7 @@ class ModSelectState extends State
 			}),
 		];
 		
-		boxGrp = new FlxTypedGroup<FlxSprite>();
+		boxGrp = new FlxTypedGroup<ModBox>();
 		add(boxGrp);
 		
 		mods = [];
@@ -203,7 +205,7 @@ class ModSelectState extends State
 					sel.change(-1);
 				if (Keys.RIGHT_P)
 					sel.change(1);
-				if ((Keys.BACK_P && sel.canInput == null) || (sel.canInput != null && !sel.canInput)) {
+				if ((Keys.BACK_P && !(sel is InputOption)) || (sel is InputOption && !sel.canInput)) {
 					Utility.playSound("menu/cancel", true);
 					sel.selected = false;
 					if (sel != null) {
@@ -216,7 +218,7 @@ class ModSelectState extends State
 				}
 			} else {
 				if (Keys.ACCEPT_P) {
-					if (sel.callback != null) {
+					if (sel is TextOption) {
 						sel.callback();
 						return;
 					} else {
