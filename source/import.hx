@@ -30,6 +30,7 @@ import survey.states.CustomState;
 import survey.substates.CustomSubState;
 
 import survey.visuals.BitmapText;
+import survey.visuals.Camera
 
 import flixel.graphics.FlxGraphic;
 
