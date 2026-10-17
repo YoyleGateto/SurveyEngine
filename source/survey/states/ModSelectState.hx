@@ -2,7 +2,7 @@ package survey.states;
 
 import survey.visuals.ModBox;
 import sys.FileSystem;
-import survey.options.*;
+import survey.visuals.options.*;
 import core.game.ConfigState;
 
 class ModSelectState extends State
