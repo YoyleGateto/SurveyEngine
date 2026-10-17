@@ -23,8 +23,8 @@ class SoundTray extends FlxSoundTray
 
 	override public function update(elapsed:Float):Void
 	{
-		y = CoolUtil.fpsLerp(y, targetY, 0.15);
-		alpha = CoolUtil.fpsLerp(alpha, targetAlpha, 0.15);
+		y = Utility.fpsLerp(y, targetY, 0.15);
+		alpha = Utility.fpsLerp(alpha, targetAlpha, 0.15);
 
 		if (_timer > 0)
 		{

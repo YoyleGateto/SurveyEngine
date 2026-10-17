@@ -360,7 +360,7 @@ class Paths
 
     public static function ndll(fileName:String, funcName:String, ?args:Int = 0, ?missingPrint:Bool = true):Dynamic
     {
-        final path:String = getPath('ndlls/' + fileName + '-' + CoolVars.BUILD_TARGET + '.ndll', missingPrint);
+        final path:String = getPath('ndlls/' + fileName + '-' + Vars.BUILD_TARGET + '.ndll', missingPrint);
 
         return path == null ? Reflect.makeVarArgs((arr:Array<Dynamic>) -> {}) : CFFI.load(path, funcName, args ?? 0);
     }

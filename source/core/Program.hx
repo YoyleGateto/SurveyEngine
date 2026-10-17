@@ -32,7 +32,7 @@ class Program extends FlxGame
 
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.pressed.SHIFT)
 		{
-			if (CoolVars.data.developerMode)
+			if (Vars.data.developerMode)
 			{
 				if (FlxG.keys.justPressed.R)
 					Utility.resetGame();
@@ -45,7 +45,7 @@ class Program extends FlxGame
 					if (FlxG.state.subState != null)
 						FlxG.state.subState.close();
 	
-					CoolUtil.switchState(new ModSelectState(), true);
+					Utility.switchState(new ModSelectState(), true);
 				}
 			}
 		}

@@ -48,7 +48,7 @@ class InputOption extends BaseOption
 			}
 		}
 		
-		if (canInput && CoolVars.mobile && !FlxG.stage.window.textInputEnabled)
+		if (canInput && Vars.mobile && !FlxG.stage.window.textInputEnabled)
 			FlxG.stage.window.textInputEnabled = true;
 		
 		line.x = label.x + 320;

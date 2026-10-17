@@ -297,7 +297,7 @@ class Main extends Sprite
 		PluginsHandler.init();
 		SequenceHandler.init();
 		
-		Lib.current.stage.window.setIcon(Paths.library.getImage(CoolVars.data.icon + '.png'));
+		Lib.current.stage.window.setIcon(Paths.library.getImage(Vars.data.icon + '.png'));
 
 		final soundTray:SoundTray = cast FlxG.game.soundTray;
 		if (soundTray != null)
@@ -308,7 +308,7 @@ class Main extends Sprite
 
 		FlxG.stage.addChild(debugCounter = new DebugCounter());
 		
-		if (Vars.data.allowDebugPrint && CoolVars.data.developerMode)
+		if (Vars.data.allowDebugPrint && Vars.data.developerMode)
 			PluginsHandler.add(debugPrintPlugin = new DebugPrintPlugin());
 			
 		if (Vars.mobile)

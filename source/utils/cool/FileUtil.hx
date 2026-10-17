@@ -26,5 +26,5 @@ class FileUtil
     
 	@:access(flixel.util.FlxSave.validate)
 	public static function getSavePath(modSupport:Bool = true):String
-		return FlxG.stage.application.meta.get('company') + '/' + flixel.util.FlxSave.validate(FlxG.stage.application.meta.get('file')) + (modSupport ? ((Paths.mod == null ? '' : '/' + (CoolVars.data.modID ?? Paths.mod))) : '');
+		return FlxG.stage.application.meta.get('company') + '/' + flixel.util.FlxSave.validate(FlxG.stage.application.meta.get('file')) + (modSupport ? ((Paths.mod == null ? '' : '/' + (Vars.data.modID ?? Paths.mod))) : '');
 }
