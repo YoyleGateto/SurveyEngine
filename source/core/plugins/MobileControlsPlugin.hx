@@ -104,6 +104,7 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
     public function toggleButtons(show:Bool)
     {
         for (obj in [acceptButton, backButton, menuButton, joystick])
+        {
             obj.restart();
             obj.exists = show;
         }
@@ -112,14 +113,11 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
     public function createControls()
     {
 		acceptButton = new MobileButton(0,0, Paths.sprite("ui/mobile/z"), Paths.sprite("ui/mobile/zPress"));
-		acceptButton.updateHitbox();
         add(acceptButton);
         backButton = new MobileButton(0,0, Paths.sprite("ui/mobile/x"), Paths.sprite("ui/mobile/xPress"));
-        backButton.updateHitbox();
         add(backButton);
         menuButton = new MobileButton(0,0, Paths.sprite("ui/mobile/c"), Paths.sprite("ui/mobile/cPress"));
-		menuButton.updateHitbox();
-        add(menuButton);
+		add(menuButton);
         joystick = new MobileJoystick(0,0, 720, Paths.sprite("ui/mobile/joystickBase"), Paths.sprite("ui/mobile/joystickThumb"));
         add(joystick);
         for (obj in [acceptButton, backButton, menuButton, joystick])

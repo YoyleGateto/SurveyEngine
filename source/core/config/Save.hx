@@ -82,7 +82,7 @@ class Save
 	
 	// CONFIG //
 	
-    public function loadOptions()
+    public static function loadOptions()
     {
         if (Paths.exists('data/options.json'))
         {
