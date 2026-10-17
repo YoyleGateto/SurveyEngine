@@ -26,7 +26,7 @@ class CustomState extends State
         manager.loadFolder("data/substates/" + script);
         
         #if cpp
-        FlxG.autoPause = !CoolVars.data.developerMode || !CoolVars.data.scriptsHotReloading;
+        FlxG.autoPause = !Vars.data.developerMode || !Vars.data.scriptsHotReloading;
         #end
 
         manager.callback('create');
@@ -89,7 +89,7 @@ class CustomState extends State
     public function resetCustomState()
     {
         shouldClearMemory = false;
-        CoolUtil.switchState(new CustomState(scriptName, manager.arguments), true, true);
+        Utility.switchState(new CustomState(scriptName, manager.arguments), true, true);
         debugTrace('Current State: ' + scriptName, RESET_STATE);
     }
 }
