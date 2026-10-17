@@ -83,7 +83,7 @@ class ModSelectState extends State
 			boxGrp.add(spr);
 		}
 		
-		soul = new FlxSprite().loadGraphic(Paths.image('soul/heart_menu'));
+		soul = new FlxSprite().loadGraphic(Paths.sprite('soul/heart_menu'));
 		soul.color = FlxColor.RED;
 		soul.scale.set(2, 2);
 		soul.updateHitbox();
@@ -101,7 +101,7 @@ class ModSelectState extends State
 		FlxG.cameras.add(creatorCam, false);
 		creatorCam.scroll.x = -FlxG.width;
 		
-		soul2 = new FlxSprite().loadGraphic(Paths.image('soul/heart_menu'));
+		soul2 = new FlxSprite().loadGraphic(Paths.sprite('soul/heart_menu'));
 		soul2.color = FlxColor.RED;
 		soul2.scale.set(2, 2);
 		soul2.updateHitbox();
@@ -150,7 +150,7 @@ class ModSelectState extends State
 		super.update(elapsed);
 		
 		var c = Math.sin(FlxG.game.ticks / 1000) * 255;
-		FlxG.camera.bgColor = FlxColor.fromRGB(0,0,c/4);
+		FlxG.camera.bgColor = FlxColor.fromRGB(0, 0, Std.int(c / 4));
 		for (i => spr in boxGrp.members) {
 			spr.alpha = (i == sel) ? 1 : 0.75;
 			spr.color = switch(spr.mod) {
