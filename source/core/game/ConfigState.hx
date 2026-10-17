@@ -1,6 +1,6 @@
 package core.game;
 
-import survey.states.ModsState;
+import survey.states.ModSelectState;
 
 import flixel.FlxState;
 import api.DesktopAPI;
@@ -25,7 +25,7 @@ class ConfigState extends FlxState
 	                CoolUtil.switchState(new CustomState("StartupState"), true, true);
 	            } else {
 	                showedMenu = true;
-	                CoolUtil.switchState(new ModsState(), true, false);
+	                CoolUtil.switchState(new ModSelectState(), true, false);
 	            }
             #end
         });

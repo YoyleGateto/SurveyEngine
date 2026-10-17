@@ -31,7 +31,7 @@ class ModSelectState extends State
 			author: "",
 			useSaveFiles: false
 		};//"
-		creationMenu = false
+		creationMenu = false;
 		optionsGrp = [
 			new InputOption("Name", modData, "name"),
 			new InputOption("Author", modData, "author"),

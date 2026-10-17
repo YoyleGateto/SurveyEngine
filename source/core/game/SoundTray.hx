@@ -1,4 +1,4 @@
-package core.gane;
+package core.game;
 
 import flixel.system.ui.FlxSoundTray;
 import flixel.system.FlxAssets;
