@@ -59,7 +59,7 @@ class ScriptConfig
     ];
 
     public static final VARIABLES:Map<String, Dynamic> = [
-        'debugTrace' => debugTrace,
+        'debugTrace' => Utility.debugTrace,
         'initSequence' => SequenceHandler.initSequence,
         'doDialouge' => SequenceHandler.doDialouge,
     ];

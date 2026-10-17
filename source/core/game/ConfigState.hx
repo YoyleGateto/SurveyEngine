@@ -19,13 +19,13 @@ class ConfigState extends FlxState
         
 		FlxTimer.wait(0.0001, () -> {
 			#if !includesModding
-				CoolUtil.switchState(new CustomState("StartupState"), true, true);
+				Utility.switchState(new CustomState("StartupState"), true, true);
 			#else
 	            if (showedMenu) {
-	                CoolUtil.switchState(new CustomState("StartupState"), true, true);
+	                Utility.switchState(new CustomState("StartupState"), true, true);
 	            } else {
 	                showedMenu = true;
-	                CoolUtil.switchState(new ModSelectState(), true, false);
+	                Utility.switchState(new ModSelectState(), true, false);
 	            }
             #end
         });

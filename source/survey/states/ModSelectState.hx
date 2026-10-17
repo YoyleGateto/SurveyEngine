@@ -190,7 +190,7 @@ class ModSelectState extends State
 	
 	                save.data.currentMod = mod;
 					
-					CoolUtil.switchState(new ConfigState(), false, true);
+					Utility.switchState(new ConfigState(), false, true);
 				}
 			}
 		} else {
