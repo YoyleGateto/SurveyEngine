@@ -26,7 +26,7 @@ class InputOption extends BaseOption
 		FlxG.stage.window.onTextInput.add(onTextInput);
 	}
 	
-	override function load()
+	override public function load()
 	{
 		val = Reflect.field(save, name) ?? "";
 	}

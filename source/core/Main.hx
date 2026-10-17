@@ -291,7 +291,6 @@ class Main extends Sprite
 		Paths.initMod();
         Vars.loadMetadata();
         Paths.init();
-		Discord.init();
         Save.init();
 		ScriptConfig.config();
 		PluginsHandler.init();

@@ -8,7 +8,7 @@ class CustomState extends State
     public var scriptName:String = '';
 	public var manager:ScriptManager;
     
-    override function new(script:String, ?args:Array<Dynamic>)
+    override public function new(script:String, ?args:Array<Dynamic>)
     {
         super();
 

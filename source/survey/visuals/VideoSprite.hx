@@ -12,9 +12,9 @@ class VideoSprite extends FlxVideoSprite
 
     public var loaded:Bool = false;
 
-    override public function new(?x:Float = 0, ?y:Float = 0, path:String, playOnLoad:Bool = true, loop:Bool = false, ?loadCallback:Void -> Void, ?finishCallback:Void -> Void, ?errorCallback:String -> Void)
+    override public function new(?x:Float, ?y:Float, path:String, playOnLoad:Bool = true, loop:Bool = false, ?loadCallback:Void -> Void, ?finishCallback:Void -> Void, ?errorCallback:String -> Void)
     {
-        super(x, y);
+        super(x ?? 0.0, y ?? 0.0);
 
         this.finishCallback = finishCallback ?? () -> {};
         this.errorCallback = errorCallback ?? (message:String) -> {};

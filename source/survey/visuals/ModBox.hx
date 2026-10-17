@@ -7,8 +7,8 @@ class ModBox extends FlxSpriteGroup
 	public var bg:FlxSprite;
 	public var text:BitmapText;
 	public var mod:Any;
-	public function new(?X:Float = 0.0, ?Y:Float = 0.0, ?mod) {
-		super(X,Y);
+	public function new(?X:Float, ?Y:Float, ?mod:Null<Dynamic>) {
+		super(X ?? 0, Y ?? 0);
 		this.mod = mod;
 		var str = mod == null ? "Mod Example" : (mod == 0 ? "New Project" : (mod == 1 ? "Reload" : mod));
 		bg = new FlxSprite().makeGraphic(600, 52, 0);

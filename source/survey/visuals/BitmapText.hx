@@ -20,7 +20,7 @@ class BitmapText extends FlxBitmapText {
 	function set_fontPath(Font:String):String
 	{
 		if (exists) {
-			if (!Paths.exists("fonts/" +Font + ".png") || !Paths.exists("fonts/" +Font + ".json")) return;
+			if (!Paths.exists("fonts/" +Font + ".png") || !Paths.exists("fonts/" +Font + ".json")) return Font;
 			var bitmap = BitmapData.fromImage(Paths.library.getImage("fonts/" + Font + ".png"));
 			var json = Paths.json("fonts/" + Font);
 			var used = (json.used == null) ? "" : json.used;
@@ -38,13 +38,14 @@ class BitmapText extends FlxBitmapText {
         size = Size ?? 1;
     }
 
-	public function setFormat(Font:String, ?Size:Int = 1, ?Color:FlxColor = FlxColor.WHITE, ?Alignment:String){
+	public function setFormat(Font:String, ?Size:Int = 1, ?Color:FlxColor = FlxColor.WHITE, ?Alignment:String)
+	{
 		if(exists) {
 			fontPath = Font;
 			size = Size;
 			color = Color;
 			if (Alignment != null) alignment = Alignment;
-			return this;
 		}
+		return this;
 	}
 }

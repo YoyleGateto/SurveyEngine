@@ -10,9 +10,9 @@ class MobileButton extends FlxSprite
 	public var idleGraphic:FlxGraphic;
 	public var pressGraphic:FlxGraphic;
 	
-	public function new(X:Float = 0.0, Y:Float = 0.0, ?IdleGraphic:FlxGraphic, ?PressGraphic:FlxGraphic)
+	public function new(?X:Float, ?Y:Float, ?IdleGraphic:FlxGraphic, ?PressGraphic:FlxGraphic)
 	{
-		super(X, Y);
+		super(X ?? 0.0, Y ?? 0.0);
 		idleGraphic = IdleGraphic;
 		pressGraphic = PressGraphic;
 		loadGraphic(idleGraphic);

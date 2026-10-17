@@ -4,7 +4,7 @@ import survey.visuals.options.BaseOption;
 
 class StringOption extends BaseOption
 {
-	override function new(?DisplayName, ?List:Array<String>, ?Save:Dynamic, ?Name:String)
+	override public function new(?DisplayName, ?List:Array<String>, ?Save:Dynamic, ?Name:String)
 	{
 		super(DisplayName, Save, Name);
 		list = List ?? ["A", "B", "C"];
@@ -17,12 +17,12 @@ class StringOption extends BaseOption
 		text.text = list[val];
 	}
 	
-	override function load()
+	override public  function load()
 	{
 		val = Reflect.field(save, name) ?? min;
 	}
 	
-	override function change(?num:Int = 0):Int
+	override public function change(?num:Int = 0):Int
 	{
 		val += num;
 		if (val >= list.length) val = 0;

@@ -38,5 +38,7 @@ import flixel.graphics.FlxGraphic;
 import api.MobileAPI;
 import api.DesktopAPI;
 
+import haxe.ds.StringMap;
+
 using StringTools;
 #end

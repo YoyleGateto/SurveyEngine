@@ -21,9 +21,9 @@ class MobileJoystick extends FlxSpriteGroup
 	
 	public var keys:StringMap<Dynamic> = new StringMap();
 	
-	public function new(X:Float = 0.0, Y:Float = 0.0, ?Radius:Float, ?baseGraphic:FlxGraphic, ?thumbGraphic:FlxGraphic)
+	public function new(?X:Float, ?Y:Float, ?Radius:Float, ?baseGraphic:FlxGraphic, ?thumbGraphic:FlxGraphic)
 	{
-		super(X, Y);
+		super(X ?? 0, Y ?? 0);
 		for (id in ["left", "up", "right", "down"]) {
 			keys.set(id, {
 				pressed: false,

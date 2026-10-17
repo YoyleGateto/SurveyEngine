@@ -18,7 +18,7 @@ class ScriptManager implements IFlxDestroyable
         arguments = args;
     }
 
-    function loadFolder(path:String, ?recursive:Bool = true, ?args:Array<Dynamic>)
+    public function loadFolder(path:String, ?recursive:Bool = true, ?args:Array<Dynamic>)
     {
         if (destroyed)
             return;
@@ -34,7 +34,7 @@ class ScriptManager implements IFlxDestroyable
         }
     }
 
-    function load(path:String, ?args:Array<Dynamic>)
+    public function load(path:String, ?args:Array<Dynamic>)
     {
         if (destroyed)
             return;
@@ -53,7 +53,7 @@ class ScriptManager implements IFlxDestroyable
         }
     }
 
-    function set(name:String, value:Dynamic):Void
+    public function set(name:String, value:Dynamic):Void
     {
         if (destroyed)
             return;
@@ -62,7 +62,7 @@ class ScriptManager implements IFlxDestroyable
             script.set(name, value);
     }
 
-    function call(name:String, ?args:Array<Dynamic>):Array<Dynamic>
+    public function call(name:String, ?args:Array<Dynamic>):Array<Dynamic>
     {
         if (destroyed)
             return [];
@@ -70,14 +70,14 @@ class ScriptManager implements IFlxDestroyable
         return [for (script in members) script.call(name, args)];
     }
     
-    function callback(name:String, ?args:Array<Dynamic>):Array<Dynamic>
+    public function callback(name:String, ?args:Array<Dynamic>):Array<Dynamic>
     {
         return call(name, args).contains(false);
     }
 
     var destroyed(default, null):Bool = false;
 
-    function destroy()
+    override public function destroy()
     {
         members = null;
         haxeContext = null;

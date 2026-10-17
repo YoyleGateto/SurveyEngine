@@ -10,7 +10,7 @@ class BoolOption extends BaseOption
 		val = Reflect.field(save, name) ?? false;
 	}
 	
-	override function load()
+	override public function load()
 	{
 		val = Reflect.field(save, name) ?? false;
 	}
@@ -21,7 +21,7 @@ class BoolOption extends BaseOption
 		text.text = val ? "ON" : ("OFF");
 	}
 	
-	override function change(?num:Int):Int
+	override public function change(?num:Int):Int
 	{
 		val = !val;
 		Reflect.setField(save, name, val);

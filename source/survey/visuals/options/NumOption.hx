@@ -16,12 +16,12 @@ class NumOption extends BaseOption
 		val = Reflect.field(save, name) ?? min;
 	}
 	
-	override function load()
+	override public  function load()
 	{
 		val = Reflect.field(save, name) ?? min;
 	}
 	
-	override function change(?num:Int = 0):Int
+	override public function change(?num:Int = 0):Int
 	{
 		val += (step * num);
 		if (val > max) val = min;

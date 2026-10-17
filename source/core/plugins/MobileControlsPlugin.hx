@@ -92,8 +92,8 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
     {
         for (obj in [acceptButton, backButton, menuButton, joystick])
         {
+            remove(cast obj, false);
             obj.destroy();
-            remove(cast obj, true);
         }
         acceptButton = null;
         backButton = null;

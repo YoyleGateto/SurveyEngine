@@ -22,11 +22,7 @@ class CustomSubState extends SubState
 
         manager.load("data/substates/" + script);
         manager.loadFolder("data/substates/" + script);
-
-        if (variables != null)
-            for (key in variables.keys())
-                setOnScripts(key, variables.get(key));
-
+        
         openCallback = function() {
             manager.callback('open');
             manager.callback('postOpen');

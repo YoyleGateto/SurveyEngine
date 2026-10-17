@@ -5,16 +5,16 @@ class SequenceHandler {
 	public static var portrait:FlxSprite;
 	public static var box:FlxSprite;
 	
-	public static var textTimer:FlxTimer;
+	public static var timer:FlxTimer;
 	public static var sequence:Array<Void -> Void> = [];
 	public static var conditionCallback:Null<Void -> Bool>;
     
     public static function clean(?state:flixel.FlxState)
     {
-    	if (textTimer != null) {
-			textTimer.cancel();
-			textTimer.destroy();
-			textTimer = null;
+    	if (timer != null) {
+			timer.cancel();
+			timer.destroy();
+			timer = null;
 		}
 		text = null;
 		portrait = null;
@@ -34,7 +34,7 @@ class SequenceHandler {
 	public static function doDialouge(?str:String = "", ?keepText:Bool, ?noAccept:Bool, ?soundPath:OneOfTwo<String, Array<String>>, ?graphicPath:String, ?offset:Float){
 		conditionCallback = null;
 		
-		textTimer?.cancel();
+		timer?.cancel();
 		
 		if (graphicPath != null && portrait != null) {
 			portrait.loadGraphic(Paths.image("ui/text/face/" + graphicPath));
@@ -49,8 +49,8 @@ class SequenceHandler {
 		if (text != null)
 			text.visible = true;
 			
-		if (overworldtextBox != null)
-			overworldtextBox.visible = true;
+		if (box != null)
+			box.visible = true;
 		
 		var sounds = [];
 		if (soundPath == null)
@@ -71,7 +71,7 @@ class SequenceHandler {
 		if (!noAccept) {
 			conditionCallback = () -> {
 				if(Keys.BACK_P) {
-					textTimer.cancel();
+					timer.cancel();
 					text.text = str.replace("|w", "");
 					conditionCallback = () -> {
 						if(Keys.ACCEPT_P) {
@@ -81,8 +81,8 @@ class SequenceHandler {
 					}
 				}
 				if(Keys.MENU) {
-					if (textTimer != null) {
-						textTimer.cancel();
+					if (timer != null) {
+						timer.cancel();
 					}
 					endDialouge(keepText);
 					return true;
@@ -92,8 +92,8 @@ class SequenceHandler {
 		} else {
 			conditionCallback = () -> {
 				if(Keys.BACK_P || Keys.MENU) {
-					if (textTimer != null) {
-						textTimer.cancel();
+					if (timer != null) {
+						timer.cancel();
 					}
 					text.text = str.replace("|w", "");
 					return true;
@@ -102,7 +102,7 @@ class SequenceHandler {
 			}
 		}
 		
-		textTimer.start(offset ?? 0.02, (ses) -> {
+		timer.start(offset ?? 0.02, (ses) -> {
 			final nextChar = chars.shift();
 			if (text != null) {
 				if (nextChar != "\\") {
@@ -133,8 +133,8 @@ class SequenceHandler {
 			
 			lastChar = nextChar;
 			if (chars.length == 0) {
-				if (textTimer != null)
-					textTimer.cancel();
+				if (timer != null)
+					timer.cancel();
 					
 				if (!noAccept) {
 					conditionCallback = () -> {
@@ -142,6 +142,7 @@ class SequenceHandler {
 							endDialouge(keepText);
 							return true;
 						}
+						return false;
 					}
 				} else {
 					callEvent();
@@ -158,7 +159,7 @@ class SequenceHandler {
 		if (box != null) box.visible = false;
 	}
 	
-	public static function update(?state:flixel.FlxState)
+	public static function update()
 	{
 		if (conditionCallback != null) {
 			var result = conditionCallback();
@@ -177,7 +178,7 @@ class SequenceHandler {
 	
 	public static function init()
     {
-        textTimer = new FlxTimer();
+        timer = new FlxTimer();
         
         FlxG.signals.preStateCreate.add(clean);
         FlxG.signals.postUpdate.add(update);

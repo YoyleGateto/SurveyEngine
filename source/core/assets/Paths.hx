@@ -112,7 +112,7 @@ class Paths
                 prefix: 'sprites/',
                 postfix: '.png',
                 method: (id, permanent, missingPrint) -> {
-                    final bitmap:BitmapData = BitmapData.fromsprite(library.getsprite(id));
+                    final bitmap:BitmapData = BitmapData.fromImage(library.getImage(id));
                     
                     if (cacheOnGPU)
                     {
