@@ -112,7 +112,7 @@ class Paths
                 prefix: 'sprites/',
                 postfix: '.png',
                 method: (id, permanent, missingPrint) -> {
-                    final bitmap:BitmapData = BitmapData.fromImage(library.getImage(id));
+                    final bitmap:BitmapData = BitmapData.fromsprite(library.getsprite(id));
                     
                     if (cacheOnGPU)
                     {
@@ -136,7 +136,7 @@ class Paths
             },
             FileType.ATLAS => {
                 method: (id, permanent, missingPrint) -> {
-                    final graphic:FlxGraphic = image(id, permanent, missingPrint);
+                    final graphic:FlxGraphic = sprite(id, permanent, missingPrint);
                     final data:String = getContent('images/' + id + '.xml', permanent, missingPrint);
                     
                     return FlxAtlasFrames.fromSparrow(graphic, data);
@@ -158,7 +158,7 @@ class Paths
 
                         for (i in 1...files.length)
                         {
-                            var extraFrames:FlxAtlasFrames = getAtlasAtlas(files[i], permanent, missingPrint);
+                            var extraFrames:FlxAtlasFrames = getAtlas(files[i], permanent, missingPrint);
 
                             if (extraFrames != null)
                                 parentFrames.addAtlas(extraFrames, true);

@@ -10,7 +10,7 @@ class BaseOption extends FlxSpriteGroup
 	public var text:FlxText;
 	public var selected:Bool;
 	
-	override function new(DisplayName:String, Save:Dynamic, Name:String)
+	override public function new(DisplayName:String, Save:Dynamic, Name:String)
 	{
 		super(0, 0);
 		

@@ -21,7 +21,7 @@ class BoolOption extends BaseOption
 		text.text = val ? "ON" : ("OFF");
 	}
 	
-	override function change(?num:Int)
+	override function change(?num:Int):Int
 	{
 		val = !val;
 		Reflect.setField(save, name, val);

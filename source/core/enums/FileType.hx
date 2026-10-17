@@ -4,7 +4,7 @@ enum abstract FileType(String) from String to String
 {
     var BYTES = 'bytes';
     var CONTENT = 'content';
-    var IMAGE = 'image';
+    var SPRITE = 'sprite';
     var AUDIO = 'audio';
     var ATLAS = 'atlas';
     var MULTI_ATLAS = 'multi_atlas';

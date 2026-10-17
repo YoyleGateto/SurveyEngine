@@ -7,15 +7,18 @@ import openfl.display.BitmapData;
 
 class BitmapText extends FlxBitmapText {
 	public var size(default, set):Float = 1;
-	function set_size(Size:Float){
+	function set_size(Size:Float):Float
+	{
 		if (exists) {
 			scale.set(Size, Size);
 	        updateHitbox();
         }
         size = Size;
+        return Size;
 	}
 	public var fontPath(default, set):String = "main";
-	function set_fontPath(Font:String){
+	function set_fontPath(Font:String):String
+	{
 		if (exists) {
 			if (!Paths.exists("fonts/" +Font + ".png") || !Paths.exists("fonts/" +Font + ".json")) return;
 			var bitmap = BitmapData.fromImage(Paths.library.getImage("fonts/" + Font + ".png"));
@@ -26,6 +29,7 @@ class BitmapText extends FlxBitmapText {
 		    font = FlxBitmapFont.fromMonospace(bitmap, used, FlxPoint.weak(pX, pY));
 			fontPath = Font;
 		}
+		return Font;
 	}
 	
     public function new(X:Float = 0.0, Y:Float = 0.0, ?Font:String, ?Text:String, ?Size:Float) {
@@ -40,7 +44,7 @@ class BitmapText extends FlxBitmapText {
 			size = Size;
 			color = Color;
 			if (Alignment != null) alignment = Alignment;
-			return super;
+			return this;
 		}
 	}
 }

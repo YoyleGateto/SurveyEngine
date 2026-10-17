@@ -19,7 +19,6 @@ class ModSelectState extends State
 	var creatorCam:Camera;
 	var creationMenu:Bool;
 	var modData:Dynamic;
-	var creationMenu:Bool;
 	
 	override function create() {
 		super.create();

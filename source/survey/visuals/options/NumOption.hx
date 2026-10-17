@@ -28,6 +28,6 @@ class NumOption extends BaseOption
 		if (val < min) val = max;
 		Reflect.setField(save, name, val);
 		Utility.playSound("menu/scroll", true);
-		return num
+		return num;
 	}
 }

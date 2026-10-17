@@ -13,7 +13,7 @@ class InputOption extends BaseOption
 	public var line:FlxSprite;
 	public var canInput:Bool = false;
 	
-	override function new(DisplayName:String, Save:Dynamic, Name:String)
+	override public function new(DisplayName:String, Save:Dynamic, Name:String)
 	{
 		super(DisplayName, Save, Name);
 		

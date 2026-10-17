@@ -17,7 +17,7 @@ enum abstract PrintType(String) from String to String
     {
         return switch (cast(this, PrintType))
         {
-            case POP_UP, HSCRIPT, LUA, LOAD_SONG, LOAD_WEEK, RESET_STATE, DISCORD:
+            case POP_UP, HSCRIPT, RESET_STATE:
                 true;
             default:
                 false;
@@ -84,8 +84,6 @@ enum abstract PrintType(String) from String to String
                 0xFFFF00FF;
             case RESET_STATE:
                 FlxColor.YELLOW;
-            case BENCHMARK:
-                FlxColor.PINK;
             default:
                 FlxColor.GRAY;
         }

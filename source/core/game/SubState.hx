@@ -9,12 +9,12 @@ class SubState extends FlxSubState
     override function create()
     {
         super.create();
-		FlxG.cameras.add(subCamera = new Camera(), false);
+		FlxG.cameras.add(subCam = new Camera(), false);
     }
 
 	override function destroy()
 	{
-        FlxG.cameras.remove(subCamera, true);
+        FlxG.cameras.remove(subCam, true);
 		super.destroy();
 	}
 }

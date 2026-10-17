@@ -5,7 +5,7 @@ import ale.rulescript.RuleScriptGlobal;
 import rulescript.Context;
 
 @:publicFields
-class ScriptsManager implements IFlxDestroyable
+class ScriptManager implements IFlxDestroyable
 {
     var members:Array<HScript> = [];
     final arguments:Array<Dynamic> = [];
