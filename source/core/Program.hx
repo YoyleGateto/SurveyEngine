@@ -5,9 +5,9 @@ import flixel.FlxGame;
 
 import api.DesktopAPI;
 
-import core.backend.SoundTray;
+import core.game.SoundTray;
 
-import funkin.substates.ModsMenuSubState;
+import survey.states.ModSelectState;
 
 import openfl.events.FullScreenEvent;
 
@@ -17,7 +17,7 @@ class Program extends FlxGame
 {
 	override public function new(initial:InitialState)
 	{
-		super(640, 480, initial, 30, 30, true, false);
+		super(640, 480, initial, 120, 120, true, false);
 
 		_customSoundTray = SoundTray;
 	}
@@ -45,7 +45,7 @@ class Program extends FlxGame
 					if (FlxG.state.subState != null)
 						FlxG.state.subState.close();
 	
-					CoolUtil.switchState(new survey.states.ModSelectState(), true);
+					CoolUtil.switchState(new ModSelectState(), true);
 				}
 			}
 		}

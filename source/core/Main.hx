@@ -18,8 +18,8 @@ import flixel.input.keyboard.FlxKey;
 
 import survey.debug.DebugCounter;
 
-import core.config.MainState;
-import core.backend.SoundTray;
+import core.game.ConfigState;
+import core.game.SoundTray;
 import core.plugins.*;
 import core.Program;
 
@@ -87,7 +87,7 @@ class Main extends Sprite
 			if (!AndroidEnvironment.isExternalStorageManager())
 			{
 				AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
-				Utility.showPopUp('...', 'ONCE YOU GIVED THE CONSENT, THE PROGRAM WILL CLOSE, REOPEN IT AND YOU SHALL BEGIN.');
+				Utility.showPopUp(' ', 'ONCE YOU GIVED THE CONSENT, THE PROGRAM WILL CLOSE, REOPEN IT AND YOU SHALL BEGIN.');
 				Sys.exit(0);
 				return;
 			}

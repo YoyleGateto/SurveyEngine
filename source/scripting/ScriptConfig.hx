@@ -43,10 +43,10 @@ class ScriptConfig
 
         survey.visuals.Camera,
         
-        survey.visuals.BitmapText
-        survey.objects.DeltaSprite;
-		survey.objects.DeltaCharacter;
-		survey.objects.DeltaEnemy;
+        survey.visuals.BitmapText,
+        survey.objects.DeltaSprite,
+		survey.objects.DeltaCharacter,
+		survey.objects.DeltaEnemy,
 
         core.assets.Paths,
 	];

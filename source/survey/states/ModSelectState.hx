@@ -5,7 +5,7 @@ import sys.FileSystem;
 import survey.options.*;
 import core.game.ConfigState;
 
-class ModsState extends State
+class ModSelectState extends State
 {
 	var boxGrp:FlxTypedGroup<FlxSprite>;
 	var mods:Array;
