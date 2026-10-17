@@ -8,7 +8,7 @@ import core.game.ConfigState;
 class ModSelectState extends State
 {
 	var boxGrp:FlxTypedGroup<FlxSprite>;
-	var mods:Array;
+	var mods:Array<Dynamic>;
 	var sel:Int;
 	var soul:FlxSprite;
 	
