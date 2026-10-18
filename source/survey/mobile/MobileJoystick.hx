@@ -86,7 +86,7 @@ class MobileJoystick extends FlxSpriteGroup
 				thumb.y = center.y;
 				stick.x = stick.y = 0;
 				for (touch in FlxG.touches.list) {
-					pos = touch.getScreenPosition(cameras[0] ?? FlxG.camera);
+					var pos = touch.getScreenPosition(cameras[0] ?? FlxG.camera);
 					if (pos.x > button.x && pos.x < (button.x + button.width) && pos.y > button.y && pos.y < (button.y + button.height) && touch.pressed) {
 						joystickTouch = touch;
 						pressed = justPressed = true;

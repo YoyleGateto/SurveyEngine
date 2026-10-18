@@ -28,6 +28,7 @@ class BitmapText extends FlxBitmapText {
 			var pY = (json.height == null) ? bitmap.height : json.height;
 		    font = FlxBitmapFont.fromMonospace(bitmap, used, FlxPoint.weak(pX, pY));
 			fontPath = Font;
+			letterSpacing = json.spacing ?? 0;
 		}
 		return Font;
 	}

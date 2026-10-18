@@ -39,7 +39,7 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
 			"menu" => menuButton
 		];
         if (list.contains(key)) {
-        	final useStick:Bool = useJoystick.contains(key);
+        	final useStick:Bool = useJoystickKey.contains(key);
         	if (!useStick) {
 	        	final obj:MobileButton = buttons.get(key);
 				if (obj != null) {
@@ -76,11 +76,6 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
         }
         return false;
     }
-    
-    public function clean(?_)
-    {
-        destroyControls();
-    }
 
     public function restartControls()
     {
@@ -95,10 +90,15 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
             remove(cast obj, false);
             obj.destroy();
         }
-        acceptButton = null;
+        acceptButton = null ;
         backButton = null;
         menuButton = null;
         joystick = null;
+    }
+    
+    public function clean(?_)
+    {
+        destroyControls();
     }
     
     public function toggleButtons(show:Bool)

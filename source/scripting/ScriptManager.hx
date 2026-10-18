@@ -78,7 +78,7 @@ class ScriptManager implements IFlxDestroyable
 
     var destroyed(default, null):Bool = false;
 
-    override public function destroy()
+    public function destroy()
     {
         members = null;
         haxeContext = null;

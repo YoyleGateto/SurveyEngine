@@ -10,7 +10,7 @@ import openfl.ui.Mouse;
 import openfl.Lib;
 
 import openfl.events.UncaughtErrorEvent;
-import haxe.CallStack;
+import haxe.CallStack;,
 
 import flixel.input.keyboard.FlxKey;
 
@@ -124,7 +124,7 @@ class Main extends Sprite
 					DesktopAPI.showMessageBox(errMsg, "CRASH", ERROR);
 				#else
 					#if mobile
-						Utility.showPopup("CRASH", errMsg);
+						Utility.showPopUp("CRASH", errMsg);
 					#else
 						Application.current.window.alert(errMsg, "CRASH");
 					#end

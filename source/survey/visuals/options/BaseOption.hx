@@ -6,8 +6,8 @@ class BaseOption extends FlxSpriteGroup
 	public var name:String;
 	public var displayName:String;
 	public var val:Null<Dynamic>;
-	public var label:FlxText;
-	public var text:FlxText;
+	public var label:BitmapText;
+	public var text:BitmapText;
 	public var selected:Bool;
 	public var callback:Void -> Void;
 	public var canInput:Bool = false;
