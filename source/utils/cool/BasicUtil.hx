@@ -11,7 +11,7 @@ class BasicUtil
 	
 	public static function adjustColorBrightness(color:FlxColor, factor:Float):FlxColor
 	{
-        var f = factor / 100;
+        var f:Float = factor / 100;
 
         inline function adjust(c:Int):Int
             return f > 0 ? Std.int(c + (255 - c) * f) : Std.int(c * (1 + f));
@@ -21,7 +21,7 @@ class BasicUtil
 	
 	public static function playSound(path:String, vol:Float = 1, force:Bool = false):FlxSound
 	{
-		var sound = FlxG.sound.load(Paths.sound(path));
+		var sound:FlxSound = FlxG.sound.load(Paths.sound(path));
 		sound.volume = vol;
 		sound.play(force);
 		return sound;
@@ -85,12 +85,12 @@ class BasicUtil
 	
 	public static function scaleToResolution(w = 640, h = 480, base_w = 640, base_h = 480):Dynamic
 	{
-		var scale = Math.min(w/base_w, h/base_h);
-		var ww = Math.floor(w/scale);
-		var hh = Math.floor(h/scale);
+		var scale:Float = Math.min(w/base_w, h/base_h);
+		var ww:Int = Std.int(Math.floor(w/scale));
+		var hh:Int = Std.int(Math.floor(h/scale));
 	    return {
-	    	width: Std.int(ww),
-	    	height: Std.int(hh)
+	    	width: ww,
+	    	height: hh
 		};
 	}
 
@@ -186,9 +186,9 @@ class BasicUtil
         	return StringTools.hex(value);
         #end
 
-        var hex = '';
-        var digits = '0123456789ABCDEF';
-        var n = value;
+        var hex:String = '';
+        var digits:String = '0123456789ABCDEF';
+        var n:Int = value;
 
         for (i in 0...8)
         {

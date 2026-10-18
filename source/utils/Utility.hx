@@ -1,9 +1,5 @@
 package utils;
 
-import flixel.input.keyboard.FlxKey;
-
-import core.config.Save;
-
 import core.Main;
 
 @:build(core.macros.FunctionsMergeMacro.build(
