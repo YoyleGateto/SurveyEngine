@@ -190,7 +190,7 @@ class SequenceHandler {
     {
         timer = new FlxTimer();
         
-        FlxG.signals.preState,Create.add(clean);
+        FlxG.signals.preStateCreate.add(clean);
         FlxG.signals.postUpdate.add(update);
     }
     
