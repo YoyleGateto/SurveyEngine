@@ -1,7 +1,6 @@
 package core.structures;
 
 import haxe.Constraints.Function;
-
 import haxe.ds.StringMap;
 
 @:structInit class CacheConfig

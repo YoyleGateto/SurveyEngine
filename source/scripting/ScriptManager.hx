@@ -3,7 +3,7 @@ package scripting;
 import scripting.HScript;
 import ale.rulescript.RuleScriptGlobal;
 import rulescript.Context;
-import flixel.util.IFlxDestroyable;
+import flixel.util.FlxDestroyUtil.IFlxDestroyable;
 
 @:publicFields
 class ScriptManager implements IFlxDestroyable

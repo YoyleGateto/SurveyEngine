@@ -11,11 +11,8 @@ class SequenceHandler {
     
     public static function clean(?state:flixel.FlxState)
     {
-    	if (timer != null) {
+    	if (timer != null)
 			timer.cancel();
-			timer.destroy();
-			timer = null;
-		}
 		text = null;
 		portrait = null;
 		box = null;
@@ -31,13 +28,14 @@ class SequenceHandler {
 		}
 	}
 	
-	public static function doDialouge(?str:String = "", ?keepText:Bool, ?noAccept:Bool, ?soundPath:OneOfTwo<String, Array<String>>, ?graphicPath:Null<String>, ?offset:Float){
+	public static function doDialouge(?str:String = "", ?keepText:Bool, ?cantContinue:Bool, ?soundPath:OneOfTwo<String, Array<String>>, ?graphicPath:Null<String>, ?offset:Float){
 		conditionCallback = null;
 		
-		timer?.cancel();
+		if (timer != null)
+			timer.cancel();
 		
 		if (graphicPath != null && portrait != null) {
-			portrait.loadGraphic(Paths.sprite("ui/text/face/" + graphicPath));
+			portrait.loadGraphic(Paths.sprite("ui/textbox/face/" + graphicPath));
 			portrait.scale.set(2, 2);
 			portrait.updateHitbox();
 			portrait.visible = true;
@@ -68,7 +66,7 @@ class SequenceHandler {
 		
 		var chars = str.split("");
 		var lastChar = "";
-		if (!noAccept) {
+		if (!cantContinue) {
 			conditionCallback = () -> {
 				if(Keys.BACK_P) {
 					timer.cancel();
@@ -137,7 +135,7 @@ class SequenceHandler {
 				if (timer != null)
 					timer.cancel();
 					
-				if (!noAccept) {
+				if (!cantContinue) {
 					conditionCallback = () -> {
 						if(Keys.ACCEPT_P) {
 							endDialouge(keepText);
@@ -150,6 +148,17 @@ class SequenceHandler {
 				}
 			}
 		}, chars.length * 10);
+	}
+	
+	public static function enableContinue()
+	{
+		conditionCallback = () -> {
+			if(Keys.ACCEPT_P) {
+				endDialouge(keepText);
+				return true;
+			}
+			return false;
+		}
 	}
 	
 	public static function endDialouge(keepText)
@@ -181,7 +190,7 @@ class SequenceHandler {
     {
         timer = new FlxTimer();
         
-        FlxG.signals.preStateCreate.add(clean);
+        FlxG.signals.preState,Create.add(clean);
         FlxG.signals.postUpdate.add(update);
     }
     

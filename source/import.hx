@@ -15,6 +15,8 @@ import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
+import core.enums.PrintType;
+
 import core.assets.Paths;
 import core.config.Save;
 
