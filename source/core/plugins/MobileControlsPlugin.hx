@@ -18,6 +18,7 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
     override public function new()
     {
         super();
+        
         FlxG.signals.preStateCreate.add(clean);
     }
     
@@ -99,7 +100,6 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
         backButton = null;
         menuButton = null;
         joystick = null;
-        list = [];
     }
     
     public function clean(?_)

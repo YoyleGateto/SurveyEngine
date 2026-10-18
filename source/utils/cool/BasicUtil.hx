@@ -27,7 +27,8 @@ class BasicUtil
 		return sound;
 	}
 	
-	public static function reverseMin(v:Float, max:Float) {
+	public static function reverseMin(v:Float, max:Float):Float
+	{
 		if(v > max) {
 			return max + (max - v);
 		} else {
@@ -35,7 +36,8 @@ class BasicUtil
 		}
 	}
 	
-	public static function reverseMax(v:Float, min:Float) {
+	public static function reverseMax(v:Float, min:Float):Float
+	{
 		if(v < min) {
 			return min + (v - min);
 		} else {
@@ -71,7 +73,7 @@ class BasicUtil
 		return FlxMath.lerp(v1, v2, fpsRatio(ratio));
 	}
 	
-	public static function fpsRatio(ratio:Float)
+	public static function fpsRatio(ratio:Float):Float
 	{
 		return FlxMath.bound(ratio * FlxG.elapsed * 60, 0, 1);
 	}
