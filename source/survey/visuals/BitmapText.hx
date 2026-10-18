@@ -33,7 +33,7 @@ class BitmapText extends FlxBitmapText {
 		return Font;
 	}
 	
-    public function new(X:Float = 0.0, Y:Float = 0.0, ?Font:String, ?Text:String, ?Size:Float) {
+    override public function new(X:Float = 0.0, Y:Float = 0.0, ?Font:String, ?Text:String, ?Size:Float) {
 		super(X, Y, Text ?? "");
 		fontPath = Font ?? "main";
         size = Size ?? 1;

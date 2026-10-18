@@ -5,6 +5,7 @@ import sys.FileSystem;
 import survey.visuals.options.*;
 import core.game.ConfigState;
 import flixel.util.FlxSave;
+import sys.io.File;
 
 class ModSelectState extends State
 {

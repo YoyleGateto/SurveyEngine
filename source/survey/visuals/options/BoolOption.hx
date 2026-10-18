@@ -4,7 +4,7 @@ import survey.visuals.options.BaseOption;
 
 class BoolOption extends BaseOption
 {
-	override function new(?DisplayName:String, ?Save:Dynamic, ?Name:String)
+	override public function new(?DisplayName:String, ?Save:Dynamic, ?Name:String)
 	{
 		super(DisplayName, Save, Name);
 		val = Reflect.field(save, name) ?? false;

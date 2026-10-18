@@ -101,7 +101,7 @@ class Save
 
             for (bind in jsonBinds)
 				if (Reflect.field(options.keybinds, bind.id) == null)
-                	Reflect.setField(options.keybinds, bind.id, FlxKey.fromString(def));
+                	Reflect.setField(options.keybinds, bind.id, FlxKey.fromString(bind.key));
         }
         
         options.touchPos ??= {};

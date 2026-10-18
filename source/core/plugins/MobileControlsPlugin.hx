@@ -6,12 +6,23 @@ import flixel.FlxBasic;
 
 import survey.mobile.MobileButton;
 import survey.mobile.MobileJoystick;
+import core.interfaces.ITactileButton;
 
 class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
 {
+	public var acceptButton:ITactileButton;
+    public var backButton:ITactileButton;
+    public var menuButton:ITactileButton;
+    
+    public var joystick:ITactileButton;
+    
+    public var list:Array<ITactileButton>;
+    
     override public function new()
     {
         super();
+        
+        list = [];
         
         FlxG.signals.preStateCreate.add(clean);
     }
@@ -22,12 +33,6 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
         
         FlxG.signals.preStateCreate.remove(clean);
     }
-    
-    public var acceptButton:MobileButton;
-    public var backButton:MobileButton;
-    public var menuButton:MobileButton;
-    
-    public var joystick:MobileJoystick;
     
     public function checkKey(key:String, prop:KeyCheck):Bool
     {
@@ -79,13 +84,13 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
 
     public function restartControls()
     {
-        for (obj in [acceptButton, backButton, menuButton, joystick])
+        for (obj in list)
             obj.restart();
     }
     
     public function destroyControls()
     {
-        for (obj in [acceptButton, backButton, menuButton, joystick])
+        for (obj in list)
         {
             remove(cast obj, false);
             obj.destroy();
@@ -94,6 +99,7 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
         backButton = null;
         menuButton = null;
         joystick = null;
+        list = [];
     }
     
     public function clean(?_)
@@ -101,9 +107,9 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
         destroyControls();
     }
     
-    public function destroyControls(show:Bool)
+    public function toggleControls(show:Bool)
     {
-        for (obj in [acceptButton, backButton, menuButton, joystick]) if((obj is MobileButton) || (obj is MobileJoystick))
+        for (obj in list)
         {
             obj.restart();
             obj.exists = show;
@@ -120,14 +126,15 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
 		add(menuButton);
         joystick = new MobileJoystick(0,0, 720, Paths.sprite("ui/mobile/joystickBase"), Paths.sprite("ui/mobile/joystickThumb"));
         add(joystick);
-        for (obj in [acceptButton, backButton, menuButton, joystick])
+        list = [acceptButton, backButton, menuButton, joystick];
+        for (obj in list)
     		obj.cameras = cameras;
     	updateControls();
     }
     
     public function setAlpha(alpha:Float)
     {
-    	for (obj in [acceptButton, backButton, menuButton, joystick])
+    	for (obj in list)
     		obj.alpha = alpha;
     }
     

@@ -1,8 +1,9 @@
 package survey.mobile;
 
 import flixel.graphics.FlxGraphic;
+import core.interfaces.ITactileButton;
 
-class MobileButton extends FlxSprite
+class MobileButton extends FlxSprite implements ITactileButton
 {
 	public var pressed:Bool = false;
 	public var justPressed:Bool = false;

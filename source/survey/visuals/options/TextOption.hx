@@ -4,7 +4,7 @@ import survey.visuals.options.BaseOption;
 
 class TextOption extends BaseOption
 {
-	public function new(DisplayName:String, Callback:Void -> Void)
+	override public function new(DisplayName:String, Callback:Void -> Void)
 	{
 		super(DisplayName, {}, "");
 		text.visible = false;

@@ -3,8 +3,9 @@ package survey.mobile;
 import flixel.math.FlxPoint;
 import flixel.input.touch.FlxTouch;
 import flixel.graphics.FlxGraphic;
+import core.interfaces.ITactileButton;
 
-class MobileJoystick extends FlxSpriteGroup
+class MobileJoystick extends FlxSpriteGroup implements ITactileButton
 {
 	public var center:FlxPoint = FlxPoint.get(0,0);
 	public var thumb:FlxSprite;
