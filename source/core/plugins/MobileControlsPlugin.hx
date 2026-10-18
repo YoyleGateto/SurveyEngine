@@ -6,17 +6,16 @@ import flixel.FlxBasic;
 
 import survey.mobile.MobileButton;
 import survey.mobile.MobileJoystick;
-import core.interfaces.ITactileButton;
 
 class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
 {
-	public var acceptButton:ITactileButton;
-    public var backButton:ITactileButton;
-    public var menuButton:ITactileButton;
+	public var acceptButton:MobileButton;
+    public var backButton:MobileButton;
+    public var menuButton:MobileButton;
     
-    public var joystick:ITactileButton;
+    public var joystick:MobileJoystick;
     
-    public var list:Array<ITactileButton>;
+    public var list:Array<OneOfTwo<MobileButton, MobileJoystick>>;
     
     override public function new()
     {
