@@ -10,6 +10,10 @@ import utils.cool.FileUtil;
 import sys.FileSystem;
 import sys.io.File;
 
+import core.structures.CategoryData;
+import core.structures.KeybindData;
+import core.structures.OptionsJson;
+
 class Save
 {
     public static var save:FlxSave;
@@ -86,8 +90,9 @@ class Save
     {
         if (Paths.exists('data/options.json'))
         {
-            var jsonData:Dynamic = Paths.json('data/options').options;
-            var jsonBinds:Array<Dynamic> = Paths.json('data/options').keybinds;
+        	var json:OptionsJson = Paths.json('data/options');
+            var jsonData:Array<CategoryData> = json.options;
+            var jsonBinds:Array<KeybindData> = json.keybinds;
             
             for (category in jsonData)
             	for (option in category.options)
@@ -106,8 +111,9 @@ class Save
     {
         if (Paths.exists('data/options.json'))
         {
-            var jsonData:Array<Dynamic> = Paths.json('data/options').options;
-            var jsonBinds:Array<Dynamic> = Paths.json('data/options').keybinds;
+            var json:OptionsJson = Paths.json('data/options');
+            var jsonData:Array<CategoryData> = json.options;
+            var jsonBinds:Array<KeybindData> = json.keybinds;
             
             for (category in jsonData.options)
             	for (option in category.options)
