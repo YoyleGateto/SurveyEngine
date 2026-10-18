@@ -10,7 +10,7 @@ import openfl.ui.Mouse;
 import openfl.Lib;
 
 import openfl.events.UncaughtErrorEvent;
-import haxe.CallStack;,
+import haxe.CallStack;
 
 import flixel.input.keyboard.FlxKey;
 
