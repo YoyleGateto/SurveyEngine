@@ -19,7 +19,7 @@ class Save
     	return save == null ? {} : save.data;
     }
     public static var mobileOptions(get, never):Dynamic;
-    static function get_options():Dynamic
+    static function get_mobileOptions():Dynamic
     {
     	return save == null ? {} : save.mobileOptions;
     }
