@@ -62,8 +62,6 @@
 	<haxeflag name="-dce" value="no"/>
 
 	<haxedef name='lime_disable_assets_version'/>	
-
-	<haxedef name="HXC_LIBVLC_LOGGING" if="allowVideos debug"/>
 	
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN"/>
 	

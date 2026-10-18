@@ -51,6 +51,5 @@ class MobileButton extends FlxSprite
 	public function restart()
     {
         pressed = justPressed = justReleased = false;
-        color = buttonColor;
     }
 }

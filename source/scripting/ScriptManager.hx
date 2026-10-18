@@ -3,12 +3,13 @@ package scripting;
 import scripting.HScript;
 import ale.rulescript.RuleScriptGlobal;
 import rulescript.Context;
+import flixel.util.IFlxDestroyable;
 
 @:publicFields
 class ScriptManager implements IFlxDestroyable
 {
     var members:Array<HScript> = [];
-    final arguments:Array<Dynamic> = [];
+    public final arguments:Array<Dynamic> = [];
     var haxeContext:Context = new Context();
 	var subState:Bool = false;
 
@@ -70,7 +71,7 @@ class ScriptManager implements IFlxDestroyable
         return [for (script in members) script.call(name, args)];
     }
     
-    public function callback(name:String, ?args:Array<Dynamic>):Array<Dynamic>
+    public function callback(name:String, ?args:Array<Dynamic>):Bool
     {
         return call(name, args).contains(false);
     }

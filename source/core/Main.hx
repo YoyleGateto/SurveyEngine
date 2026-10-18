@@ -9,10 +9,8 @@ import openfl.display.Sprite;
 import openfl.ui.Mouse;
 import openfl.Lib;
 
-#if CRASH_HANDLER
 import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
-#end
 
 import flixel.input.keyboard.FlxKey;
 

@@ -9,6 +9,8 @@ class BaseOption extends FlxSpriteGroup
 	public var label:FlxText;
 	public var text:FlxText;
 	public var selected:Bool;
+	public var callback:Void -> Void;
+	public var canInput:Bool = false;
 	
 	override public function new(DisplayName:String, Save:Dynamic, Name:String)
 	{

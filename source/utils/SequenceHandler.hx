@@ -31,13 +31,13 @@ class SequenceHandler {
 		}
 	}
 	
-	public static function doDialouge(?str:String = "", ?keepText:Bool, ?noAccept:Bool, ?soundPath:OneOfTwo<String, Array<String>>, ?graphicPath:String, ?offset:Float){
+	public static function doDialouge(?str:String = "", ?keepText:Bool, ?noAccept:Bool, ?soundPath:OneOfTwo<String, Array<String>>, ?graphicPath:Null<String>, ?offset:Float){
 		conditionCallback = null;
 		
 		timer?.cancel();
 		
 		if (graphicPath != null && portrait != null) {
-			portrait.loadGraphic(Paths.image("ui/text/face/" + graphicPath));
+			portrait.loadGraphic(Paths.sprite("ui/text/face/" + graphicPath));
 			portrait.scale.set(2, 2);
 			portrait.updateHitbox();
 			portrait.visible = true;
@@ -78,6 +78,7 @@ class SequenceHandler {
 							endDialouge(keepText);
 							return true;
 						}
+						return false;
 					}
 				}
 				if(Keys.MENU) {

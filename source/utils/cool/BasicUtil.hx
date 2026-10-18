@@ -27,7 +27,7 @@ class BasicUtil
 		return sound;
 	}
 	
-	public static function reverseMin(v, max) {
+	public static function reverseMin(v:Float, max:Float) {
 		if(v > max) {
 			return max + (max - v);
 		} else {
@@ -268,6 +268,6 @@ class BasicUtil
 	
 	public static function colorLerp(from:FlxColor, to:FlxColor, ratio:Float):FlxColor
 	{
-		return FlxColor.interpolate(from, to, MathUtil.fpsRatio(ratio));
+		return FlxColor.interpolate(from, to, fpsRatio(ratio));
 	}
 }

@@ -13,7 +13,7 @@ class CustomState extends State
         super();
 
         scriptName = script;
-        manager = new ScriptManager(true, args ?? []);
+        manager = new ScriptManager(false, args ?? []);
     }
 
     @:unreflective var watchFiles:Array<String> = [];
@@ -22,8 +22,8 @@ class CustomState extends State
     {        
         super.create();
 
-        manager.load("data/substates/" + script);
-        manager.loadFolder("data/substates/" + script);
+        manager.load("data/states/" + scriptName);
+        manager.loadFolder("data/states/" + scriptName);
         
         #if cpp
         FlxG.autoPause = !Vars.data.developerMode || !Vars.data.scriptsHotReloading;

@@ -139,9 +139,9 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
 			menu: [FlxG.width - 150, FlxG.height-230],
 			back: [FlxG.width - 100, FlxG.height-130],
 		};
-		for (field in Reflect.fields(Save.options.touchPos))
+		for (field in Reflect.fields(Save.options.touchPos) ?? [])
 		{
-			Reflect.setField(positions, field, Reflect.field(Save.mobileControls.data, field));
+			Reflect.setField(positions, field, Reflect.field(Save.options.touchPos, field));
 		}
 	    if(acceptButton != null) {
 			acceptButton.x = positions.accept[0];

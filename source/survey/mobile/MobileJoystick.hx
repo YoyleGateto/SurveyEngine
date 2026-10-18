@@ -44,11 +44,6 @@ class MobileJoystick extends FlxSpriteGroup
 		radius = Radius ?? 720.0;
 	}
 	
-	public function setPosition(X, Y) {
-		this.x = X;
-		this.y = Y;
-	}
-	
 	override function update(elapsed)
 	{
 		thumb.scale.set(scale.x, scale.y);
@@ -77,7 +72,7 @@ class MobileJoystick extends FlxSpriteGroup
 		
 		if (!disableInput) {
 			if (pressed) {
-				pos = joystickTouch.getScreenPosition(cameras[0] ?? FlxG.camera);
+				var pos = joystickTouch.getScreenPosition(cameras[0] ?? FlxG.camera);
 				thumb.x = FlxMath.bound(pos.x, base.x, base.x + base.width);
 				thumb.y = FlxMath.bound(pos.y, base.y, base.y + base.height);
 				stick.x = (thumb.x - center.x) / (base.width * 2);

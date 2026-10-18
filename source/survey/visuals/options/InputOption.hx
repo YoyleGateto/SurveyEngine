@@ -11,7 +11,6 @@ using StringTools;
 class InputOption extends BaseOption
 {
 	public var line:FlxSprite;
-	public var canInput:Bool = false;
 	
 	override public function new(DisplayName:String, Save:Dynamic, Name:String)
 	{

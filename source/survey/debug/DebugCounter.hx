@@ -40,19 +40,17 @@ class DebugCounter extends Sprite
     {
         showBG = value;
 
-        if (!showBG)
-            graphics.clear();
-        else
-            update(null, true);
+        if (!showBG) graphics.clear();
+        else forceUpdate();
 
         return showBG;
     }
 
-    public function update(?_, ?force:Bool = false)
+    public function update(?_)
     {
         label.text = Std.string(Math.floor(1 / (FlxG.elapsed <= 0 ? 1 : FlxG.elapsed))) + "FPS\n" + (Paths.mod == null ? '' : Paths.mod) + (Vars.data.developerMode ? ' [DEV]' : '');
 
-        if (label.width != currentWidth || label.height != currentHeight || force)
+        if (label.width != currentWidth || label.height != currentHeight)
         {
             currentWidth = label.width;
             currentHeight = label.height;
@@ -65,6 +63,22 @@ class DebugCounter extends Sprite
                 graphics.drawRect(0, 0, currentWidth + 8, currentHeight + 8);
                 graphics.endFill();
             }
+        }
+    }
+    
+    public function forceUpdate()
+    {
+        label.text = Std.string(Math.floor(1 / (FlxG.elapsed <= 0 ? 1 : FlxG.elapsed))) + "FPS\n" + (Paths.mod == null ? '' : Paths.mod) + (Vars.data.developerMode ? ' [DEV]' : '');
+        currentWidth = label.width;
+        currentHeight = label.height;
+
+        if (showBG)
+        {
+            graphics.clear();
+            graphics.lineStyle(2, FlxColor.WHITE, 0.5);
+            graphics.beginFill(FlxColor.BLACK, 0.5);
+            graphics.drawRect(0, 0, currentWidth + 8, currentHeight + 8);
+            graphics.endFill();
         }
     }
 

@@ -18,6 +18,11 @@ class Save
     {
     	return save == null ? {} : save.data;
     }
+    public static var mobileOptions(get, never):Dynamic;
+    static function get_options():Dynamic
+    {
+    	return save == null ? {} : save.mobileOptions;
+    }
     
     public static var saveFiles:Array<Dynamic>;
 	public static var savesPath:String;

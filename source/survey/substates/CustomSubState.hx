@@ -20,8 +20,8 @@ class CustomSubState extends SubState
     {        
         super.create();
 
-        manager.load("data/substates/" + script);
-        manager.loadFolder("data/substates/" + script);
+        manager.load("data/substates/" + scriptName);
+        manager.loadFolder("data/substates/" + scriptName);
         
         openCallback = function() {
             manager.callback('open');

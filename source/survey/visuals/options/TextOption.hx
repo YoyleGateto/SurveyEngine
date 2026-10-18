@@ -4,8 +4,6 @@ import survey.visuals.options.BaseOption;
 
 class TextOption extends BaseOption
 {
-	public var callback:Void -> Void;
-	
 	public function new(DisplayName:String, Callback:Void -> Void)
 	{
 		super(DisplayName, {}, "");
