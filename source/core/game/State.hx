@@ -32,8 +32,7 @@ class State extends FlxState
             #if cpp
             Utility.openSubState(new CustomSubState(
                 Vars.data.transition,
-                [false, null],
-				null,
+                [false, null]
             ));
             #end
         }

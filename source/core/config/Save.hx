@@ -96,11 +96,11 @@ class Save
             
             for (category in jsonOptions)
             	for (option in category.list)
-	                if (option.id != null && Reflect.field(options.data, option.id) == null)
+	                if (option.id != null && Reflect.field(options, option.id) == null)
 	                    Reflect.setField(options, option.id, option.value);
 
             for (bind in jsonBinds)
-				if (Reflect.field(keybinds.data, bind.id) == null)
+				if (Reflect.field(options.keybinds, bind.id) == null)
                 	Reflect.setField(options.keybinds, bind.id, FlxKey.fromString(def));
         }
         

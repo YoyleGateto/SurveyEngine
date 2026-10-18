@@ -83,14 +83,14 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
             obj.restart();
     }
     
-    public function destroyButtons()
+    public function destroyControls()
     {
         for (obj in [acceptButton, backButton, menuButton, joystick])
         {
             remove(cast obj, false);
             obj.destroy();
         }
-        acceptButton = null ;
+        acceptButton = null;
         backButton = null;
         menuButton = null;
         joystick = null;
@@ -101,9 +101,9 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
         destroyControls();
     }
     
-    public function toggleButtons(show:Bool)
+    public function destroyControls(show:Bool)
     {
-        for (obj in [acceptButton, backButton, menuButton, joystick])
+        for (obj in [acceptButton, backButton, menuButton, joystick]) if((obj is MobileButton) || (obj is MobileJoystick))
         {
             obj.restart();
             obj.exists = show;

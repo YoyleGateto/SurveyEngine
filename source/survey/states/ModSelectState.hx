@@ -36,7 +36,7 @@ class ModSelectState extends State
 		optionsGrp = [
 			new InputOption("Name", modData, "name"),
 			new InputOption("Author", modData, "author"),
-			new BoolOption("Use Save Files", 1, 1, 5, modData, "useSaveFiles"),
+			new BoolOption("Use Save Files", modData, "useSaveFiles"),
 			new TextOption("Done", () -> if (modData.name != null && modData.name.length > 0) {
 				sel = 0;
 				change();

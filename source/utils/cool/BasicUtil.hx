@@ -35,8 +35,8 @@ class BasicUtil
 		}
 	}
 	
-	public static function reverseMax(v, min) {
-		if(v < max) {
+	public static function reverseMax(v:Float, min:Float) {
+		if(v < min) {
 			return min + (v - min);
 		} else {
 			return v;
