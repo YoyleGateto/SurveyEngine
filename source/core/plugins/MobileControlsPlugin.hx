@@ -15,14 +15,9 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
     
     public var joystick:MobileJoystick;
     
-    public var list:Array<OneOfTwo<MobileButton, MobileJoystick>>;
-    
     override public function new()
     {
         super();
-        
-        list = [];
-        
         FlxG.signals.preStateCreate.add(clean);
     }
     
@@ -83,13 +78,19 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
 
     public function restartControls()
     {
-        for (obj in list)
-            obj.restart();
+    	if (acceptButton != null)
+       	 acceptButton.restart();
+        if (backButton != null)
+        	backButton.restart();
+        if (menuButton != null)
+        	menuButton.restart();
+        if (joystick != null)
+        	joystick.restart();
     }
     
     public function destroyControls()
     {
-        for (obj in list)
+        for (obj in [acceptButton, backButton)
         {
             remove(cast obj, false);
             obj.destroy();
@@ -108,11 +109,9 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
     
     public function toggleControls(show:Bool)
     {
-        for (obj in list)
-        {
-            obj.restart();
+    	restartControls();
+        for (obj in [acceptButton, backButton, menuButton, joystick])
             obj.exists = show;
-        }
     }
     
     public function createControls()
@@ -125,15 +124,14 @@ class MobileControlsPlugin extends FlxTypedGroup<FlxBasic>
 		add(menuButton);
         joystick = new MobileJoystick(0,0, 720, Paths.sprite("ui/mobile/joystickBase"), Paths.sprite("ui/mobile/joystickThumb"));
         add(joystick);
-        list = [acceptButton, backButton, menuButton, joystick];
-        for (obj in list)
+        for (obj in [acceptButton, backButton, menuButton, joystick])
     		obj.cameras = cameras;
     	updateControls();
     }
     
     public function setAlpha(alpha:Float)
     {
-    	for (obj in list)
+    	for (obj in [acceptButton, backButton, menuButton, joystick])
     		obj.alpha = alpha;
     }
     
