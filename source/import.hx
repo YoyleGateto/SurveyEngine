@@ -16,6 +16,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
 import core.enums.PrintType;
+import utils.cool.LogUtil.debugTrace;
 
 import core.assets.Paths;
 import core.config.Save;

@@ -91,11 +91,11 @@ class Save
         if (Paths.exists('data/options.json'))
         {
         	var json:OptionsJson = Paths.json('data/options');
-            var jsonData:Array<CategoryData> = json.options;
+            var jsonOptions:Array<CategoryData> = json.options;
             var jsonBinds:Array<KeybindData> = json.keybinds;
             
-            for (category in jsonData)
-            	for (option in category.options)
+            for (category in jsonOptions)
+            	for (option in category.list)
 	                if (option.id != null && Reflect.field(options.data, option.id) == null)
 	                    Reflect.setField(options, option.id, option.value);
 
@@ -112,11 +112,11 @@ class Save
         if (Paths.exists('data/options.json'))
         {
             var json:OptionsJson = Paths.json('data/options');
-            var jsonData:Array<CategoryData> = json.options;
+            var jsonOptions:Array<CategoryData> = json.options;
             var jsonBinds:Array<KeybindData> = json.keybinds;
             
-            for (category in jsonData.options)
-            	for (option in category.options)
+            for (category in jsonOptions)
+            	for (option in category.list)
 	                Reflect.setField(options, option.id, option.value);
 
             for (bind in jsonBinds)

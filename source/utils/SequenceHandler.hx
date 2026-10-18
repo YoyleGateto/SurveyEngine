@@ -8,6 +8,7 @@ class SequenceHandler {
 	public static var timer:FlxTimer;
 	public static var sequence:Array<Void -> Void> = [];
 	public static var conditionCallback:Null<Void -> Bool>;
+    public static var _keepText:Bool = false;
     
     public static function clean(?state:flixel.FlxState)
     {
@@ -30,6 +31,8 @@ class SequenceHandler {
 	
 	public static function doDialouge(?str:String = "", ?keepText:Bool, ?cantContinue:Bool, ?soundPath:OneOfTwo<String, Array<String>>, ?graphicPath:Null<String>, ?offset:Float){
 		conditionCallback = null;
+		
+		_keepText = keepText;
 		
 		if (timer != null)
 			timer.cancel();
@@ -73,7 +76,7 @@ class SequenceHandler {
 					text.text = str.replace("|w", "");
 					conditionCallback = () -> {
 						if(Keys.ACCEPT_P) {
-							endDialouge(keepText);
+							endDialouge();
 							return true;
 						}
 						return false;
@@ -83,7 +86,7 @@ class SequenceHandler {
 					if (timer != null) {
 						timer.cancel();
 					}
-					endDialouge(keepText);
+					endDialouge();
 					return true;
 				}
 				return false;
@@ -138,7 +141,7 @@ class SequenceHandler {
 				if (!cantContinue) {
 					conditionCallback = () -> {
 						if(Keys.ACCEPT_P) {
-							endDialouge(keepText);
+							endDialouge();
 							return true;
 						}
 						return false;
@@ -152,18 +155,18 @@ class SequenceHandler {
 	
 	public static function enableContinue()
 	{
-		conditionCallback = () -> {
+		conditionCallback = () ->  {
 			if(Keys.ACCEPT_P) {
-				endDialouge(keepText);
+				endDialouge();
 				return true;
 			}
 			return false;
 		}
 	}
 	
-	public static function endDialouge(keepText)
+	public static function endDialouge()
 	{
-		if (text != null) text.text = "";
+		if (text != null && !_keepText) text.text = "";
 		if (portrait != null) portrait.visible = false;
 		if (text != null) text.visible = false;
 		if (box != null) box.visible = false;

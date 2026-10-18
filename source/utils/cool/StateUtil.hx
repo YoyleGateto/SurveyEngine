@@ -40,7 +40,6 @@ class StateUtil
 			openSubState(new CustomSubState(
 				Vars.data.transition,
                 [true, () -> { FlxG.switchState(state); }],
-				null,
 			));
 		}
 	}
